@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <title>Tasks</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <div class="app__title">
+        <h1>Tasks</h1>
+        <p id="counter" class="app__counter">0 tasks</p>
+      </div>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <span class="theme-toggle__icon">🌙</span>
+      </button>
+    </header>
+
+    <form id="addForm" class="add-form" autocomplete="off">
+      <input id="addInput" class="add-form__input" type="text"
+             placeholder="What needs doing?" aria-label="New task" maxlength="200" />
+      <button class="add-form__btn" type="submit" aria-label="Add task">+</button>
+    </form>
+
+    <ul id="list" class="list" aria-live="polite"></ul>
+
+    <div id="empty" class="empty">
+      <div class="empty__art">✨</div>
+      <p>All clear. Add your first task!</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
