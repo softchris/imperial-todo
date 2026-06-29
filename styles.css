@@ -85,6 +85,26 @@ body {
 .add-form__btn:hover { filter: brightness(1.08); }
 .add-form__btn:active { transform: scale(.92); }
 
+.filters {
+  display: flex; gap: 6px;
+  margin-bottom: 14px;
+}
+.filters__tab {
+  flex: 1;
+  padding: 9px 0;
+  border: none; border-radius: 12px;
+  background: var(--card);
+  color: var(--muted);
+  font-size: .9rem; font-weight: 600; cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background .2s, color .2s;
+}
+.filters__tab:hover { color: var(--accent); }
+.filters__tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+
 .list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
 .item {

@@ -25,6 +25,12 @@
       <button class="add-form__btn" type="submit" aria-label="Add task">+</button>
     </form>
 
+    <nav class="filters" role="tablist" aria-label="Filter tasks">
+      <button class="filters__tab active" data-filter="all"    role="tab" aria-selected="true">All</button>
+      <button class="filters__tab"        data-filter="active" role="tab" aria-selected="false">Active</button>
+      <button class="filters__tab"        data-filter="done"   role="tab" aria-selected="false">Done</button>
+    </nav>
+
     <ul id="list" class="list" aria-live="polite"></ul>
 
     <div id="empty" class="empty">

@@ -10,8 +10,10 @@
   const form = document.getElementById("addForm");
   const input = document.getElementById("addInput");
   const themeToggle = document.getElementById("themeToggle");
+  const filterTabs = document.querySelectorAll(".filters__tab");
 
   let todos = load();
+  let currentFilter = "all";
 
   function load() {
     try {
@@ -49,8 +51,14 @@
   }
 
   function render() {
+    const filtered = todos.filter((t) => {
+      if (currentFilter === "active") return !t.done;
+      if (currentFilter === "done") return t.done;
+      return true;
+    });
+
     list.innerHTML = "";
-    todos.forEach((t) => {
+    filtered.forEach((t) => {
       const li = document.createElement("li");
       li.className = "item" + (t.done ? " done" : "");
 
@@ -78,7 +86,7 @@
 
     const active = todos.filter((t) => !t.done).length;
     counter.textContent = `${active} task${active === 1 ? "" : "s"} left`;
-    empty.classList.toggle("hidden", todos.length > 0);
+    empty.classList.toggle("hidden", filtered.length > 0);
   }
 
   function applyTheme(theme) {
@@ -87,6 +95,17 @@
       theme === "dark" ? "☀️" : "🌙";
     localStorage.setItem(THEME_KEY, theme);
   }
+
+  filterTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      currentFilter = tab.dataset.filter;
+      filterTabs.forEach((t) => {
+        t.classList.toggle("active", t === tab);
+        t.setAttribute("aria-selected", String(t === tab));
+      });
+      render();
+    });
+  });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
